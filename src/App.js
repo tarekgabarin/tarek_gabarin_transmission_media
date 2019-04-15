@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+
 class App extends Component {
 
   constructor(props){
@@ -8,7 +9,13 @@ class App extends Component {
 
     this.state = {
         invoiceAmount: 500,
-        isEditable: false
+        isEditable: false,
+        nameOnCard: null,
+        cardNumber: null,
+        expiryDate: null,
+        securityCode: null,
+        postalCode: null,
+        isFormDirty: null
     }
   }
 
@@ -26,6 +33,40 @@ class App extends Component {
     this.setState({
       invoiceAmount: event.currentTarget.value
     });
+  };
+
+  onNameChanged = (e) => {
+    this.setState({
+      nameOnCard: e.target.value
+    })
+  };
+
+  onNumberChanged = (e) => {
+
+    this.setState({
+      cardNumber: e.target.value
+    })
+  };
+
+  onExpiryDateChanged = (e) => {
+
+    this.setState({
+      expiryDate: e.target.value
+    })
+  };
+
+  onSecurityCodeChanged = (e) => {
+
+    this.setState({
+      securityCode: e.target.value
+    })
+  };
+
+  onPostalCodeChanged = (e) => {
+
+    this.setState({
+      postalCode: e.target.value
+    })
   };
 
   render() {
@@ -69,25 +110,41 @@ class App extends Component {
 
                   <div>
                     <label htmlFor={'credit-card-name'}>Name on card</label>
-                    <input type="text" className="input" name={'credit-card-name'} />
+
+                    {(this.state.nameOnCard !== '') ? (<input onChange={this.onNameChanged} type="text" className="input input-valid" name={'credit-card-name'} />) : (<input onChange={this.onNameChanged} type="text" className="input input-invalid" name={'credit-card-name'} />)}
+
+
                   </div>
 
                   <div>
                     <label htmlFor={'credit-card-number'}>Card number</label>
-                    <input type="text" className="input" name={'credit-card-number'} />
+
+                    {(this.state.cardNumber !== '') ? (<input onChange={this.onNumberChanged} type="text" className="input input-valid" name={'credit-card-number'} />) : (<input onChange={this.onNumberChanged} type="text" className="input input-invalid" name={'credit-card-number'} />)}
+
+
                   </div>
 
                   <div className="card-info">
                     <div>
                       <label htmlFor={'expiry-date'}>Expiry Date</label>
-                      <input type="text" className="expiry-date-input" name={'expiry-date'} placeholder={'MM / YY'} />
+
+                      {this.state.expiryDate !== '' ? (<input onChange={this.onExpiryDateChanged} type="text" className="expiry-date-input input-valid" name={'expiry-date'} placeholder={'MM / YY'} />) : (<input onChange={this.onExpiryDateChanged} type="text" className="expiry-date-input input-invalid" name={'expiry-date'} placeholder={'MM / YY'} />)}
+
+
                     </div>
 
                     <div>
                       <label htmlFor={'security-code'}>Security Code</label>
                       <div className={'position-relative'}>
-                        <input type="text" className="security-code-input" name={'security-code-input'} />
-                        <img src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABF1BMVEUAAAC9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8dBUDbXAAAAXHRSTlMAAQIEBQcICw4QERITFRYXGCMlJicpLi8xMjQ1Njg5Ojs9RUlMTU5RUlZYXGFma2x1f4iJi46Pkpeam52go6Wor7S1t7q8wMHFz9HT1dfa4ubo6evt7/P19/n7/aClJO4AAAEkSURBVBgZjcGJNgJRAAbgf0ajbE1jyU6IkSXZFVnKkhZJlOp//+dw752ZqzrHOb4P2lQqW219vl4kIxi2UqH2NIN+488ccGNBm+9wSMOGb5Ge97PDg/M2le8olGiPUsWBZKw2KDUtCEaFUtaEb+SRUh5CklLJhGaWKTmA0aS0ASHkTEKapVQEHCrdLWC6TR5DMKmEkabvbrtH8g2CQSWBAvtVYxAiVDKos49rQEpTyaHDX8tQ1ui5R53aFaTQKX05FKglIFg1BjJIU9uEcEQtAYd/CsNoMrAfEk4YKAJIMhCHkGLAAWBU6ItDSNGXh2T36IlDSNHTtKAs0fPguu5umUrHhm+hyyEfMWgTJQ64HUW/9Rq1lzkMs/eua62v8uXOGP7lB8OJpDWSkNWtAAAAAElFTkSuQmCC'} alt="" />
+
+                        {this.state.securityCode !== '' ? (<input onChange={this.onSecurityCodeChanged} type="text" className="security-code-input input-valid" name={'security-code-input'} />) : (<input onChange={this.onSecurityCodeChanged} type="text" className="security-code-input input-invalid" name={'security-code-input'} />)}
+
+                        {(this.state.securityCode === '' || this.state.securityCode == null)  && (<img className={'question-mark-icon'} src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABF1BMVEUAAAC9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8dBUDbXAAAAXHRSTlMAAQIEBQcICw4QERITFRYXGCMlJicpLi8xMjQ1Njg5Ojs9RUlMTU5RUlZYXGFma2x1f4iJi46Pkpeam52go6Wor7S1t7q8wMHFz9HT1dfa4ubo6evt7/P19/n7/aClJO4AAAEkSURBVBgZjcGJNgJRAAbgf0ajbE1jyU6IkSXZFVnKkhZJlOp//+dw752ZqzrHOb4P2lQqW219vl4kIxi2UqH2NIN+488ccGNBm+9wSMOGb5Ge97PDg/M2le8olGiPUsWBZKw2KDUtCEaFUtaEb+SRUh5CklLJhGaWKTmA0aS0ASHkTEKapVQEHCrdLWC6TR5DMKmEkabvbrtH8g2CQSWBAvtVYxAiVDKos49rQEpTyaHDX8tQ1ui5R53aFaTQKX05FKglIFg1BjJIU9uEcEQtAYd/CsNoMrAfEk4YKAJIMhCHkGLAAWBU6ItDSNGXh2T36IlDSNHTtKAs0fPguu5umUrHhm+hyyEfMWgTJQ64HUW/9Rq1lzkMs/eua62v8uXOGP7lB8OJpDWSkNWtAAAAAElFTkSuQmCC'} alt="" />)}
+
+                        {/*<ReactTooltip  place="bottom" type="dark" effect="solid">*/}
+                        {/*  <span>Look on the back of your credit card to find the security card</span>*/}
+                        {/*</ReactTooltip>*/}
+
                       </div>
                     </div>
                   </div>
@@ -96,8 +153,11 @@ class App extends Component {
                     <label htmlFor={'postal-code'}>ZIP/Postal code</label>
 
                     <div className="position-relative">
-                      <input type="text" className="input" name={'postal-code'} />
-                      <img src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABF1BMVEUAAAC9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8dBUDbXAAAAXHRSTlMAAQIEBQcICw4QERITFRYXGCMlJicpLi8xMjQ1Njg5Ojs9RUlMTU5RUlZYXGFma2x1f4iJi46Pkpeam52go6Wor7S1t7q8wMHFz9HT1dfa4ubo6evt7/P19/n7/aClJO4AAAEkSURBVBgZjcGJNgJRAAbgf0ajbE1jyU6IkSXZFVnKkhZJlOp//+dw752ZqzrHOb4P2lQqW219vl4kIxi2UqH2NIN+488ccGNBm+9wSMOGb5Ge97PDg/M2le8olGiPUsWBZKw2KDUtCEaFUtaEb+SRUh5CklLJhGaWKTmA0aS0ASHkTEKapVQEHCrdLWC6TR5DMKmEkabvbrtH8g2CQSWBAvtVYxAiVDKos49rQEpTyaHDX8tQ1ui5R53aFaTQKX05FKglIFg1BjJIU9uEcEQtAYd/CsNoMrAfEk4YKAJIMhCHkGLAAWBU6ItDSNGXh2T36IlDSNHTtKAs0fPguu5umUrHhm+hyyEfMWgTJQ64HUW/9Rq1lzkMs/eua62v8uXOGP7lB8OJpDWSkNWtAAAAAElFTkSuQmCC'} alt="" />
+
+                      {this.state.postalCode !== '' ? (<input onChange={this.onPostalCodeChanged} type="text" className="input input-valid" name={'postal-code'} />) : (<input onChange={this.onPostalCodeChanged} type="text" className="input input-invalid" name={'postal-code'} />)}
+
+                      {(this.state.postalCode === '' || this.state.postalCode == null) && (<img className={'question-mark-icon'} src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABF1BMVEUAAAC9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8dBUDbXAAAAXHRSTlMAAQIEBQcICw4QERITFRYXGCMlJicpLi8xMjQ1Njg5Ojs9RUlMTU5RUlZYXGFma2x1f4iJi46Pkpeam52go6Wor7S1t7q8wMHFz9HT1dfa4ubo6evt7/P19/n7/aClJO4AAAEkSURBVBgZjcGJNgJRAAbgf0ajbE1jyU6IkSXZFVnKkhZJlOp//+dw752ZqzrHOb4P2lQqW219vl4kIxi2UqH2NIN+488ccGNBm+9wSMOGb5Ge97PDg/M2le8olGiPUsWBZKw2KDUtCEaFUtaEb+SRUh5CklLJhGaWKTmA0aS0ASHkTEKapVQEHCrdLWC6TR5DMKmEkabvbrtH8g2CQSWBAvtVYxAiVDKos49rQEpTyaHDX8tQ1ui5R53aFaTQKX05FKglIFg1BjJIU9uEcEQtAYd/CsNoMrAfEk4YKAJIMhCHkGLAAWBU6ItDSNGXh2T36IlDSNHTtKAs0fPguu5umUrHhm+hyyEfMWgTJQ64HUW/9Rq1lzkMs/eua62v8uXOGP7lB8OJpDWSkNWtAAAAAElFTkSuQmCC'} alt="" />)}
+
                     </div>
 
                   </div>
