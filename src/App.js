@@ -33,6 +33,40 @@ class App extends Component {
                       <button className={'edit-button'} name={'edit-button'}>Edit</button>
                     </div>
                   </div>
+
+                  <div>
+                    <label htmlFor={'credit-card-name'}>Name on card</label>
+                    <input type="text" className="input" name={'credit-card-name'} />
+                  </div>
+
+                  <div>
+                    <label htmlFor={'credit-card-number'}>Card number</label>
+                    <input type="text" className="input" name={'credit-card-number'} />
+                  </div>
+
+                  <div className="card-info">
+                    <div>
+                      <label htmlFor={'expiry-date'}>Expiry Date</label>
+                      <input type="text" className="expiry-date-input" name={'expiry-date'} placeholder={'MM / YY'} />
+                    </div>
+
+                    <div>
+                      <label htmlFor={'security-code'}>Security Code</label>
+                      <input type="text" className="security-code-input" name={'security-code-input'} />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor={'postal-code'}>ZIP/Postal code</label>
+                    <input type="text" className="input" name={'postal-code'} />
+                  </div>
+
+                  <div>
+                    <button className="submit-button">
+                      Pay
+                    </button>
+                  </div>
+
                 </div>
               </div>
             </div>
