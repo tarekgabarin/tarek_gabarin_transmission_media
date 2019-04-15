@@ -12,6 +12,22 @@ class App extends Component {
     }
   }
 
+  toggleEditableAmount = (event) => {
+
+    event.preventDefault();
+
+    this.setState({
+      isEditable: !this.state.isEditable
+    })
+  };
+
+  onInvoiceAmountChanged = (event) => {
+
+    this.setState({
+      invoiceAmount: event.currentTarget.value
+    });
+  };
+
   render() {
     return (
       <section>
@@ -25,14 +41,31 @@ class App extends Component {
                 </div>
                 <div className="main-fields">
                   <span className={'payment-label'}>Payment Amount</span>
-                  <div className="invoice-amount">
-                    <div>
-                        <input type={'text'} className={'input'} value="" name='amount'/>
-                    </div>
-                    <div>
-                      <button className={'edit-button'} name={'edit-button'}>Edit</button>
-                    </div>
-                  </div>
+
+                  {(this.state.isEditable) ? (
+
+                      <div className="invoice-amount">
+                        <div>
+                          <input onChange={this.onInvoiceAmountChanged} type={'number'} className={'input'} min={'1'} value={this.state.invoiceAmount} name='amount'/>
+                        </div>
+                        <div>
+                          <button onClick={(e) => this.toggleEditableAmount(e)} className={'edit-button'} name={'edit-button'}>Done</button>
+                        </div>
+                      </div>
+
+                  ) : (
+                      <div className="invoice-amount">
+                        <div>
+                          <span>{"$" + this.state.invoiceAmount}</span>
+                        </div>
+                        <div>
+                          <button onClick={(e) => this.toggleEditableAmount(e)}  className={'edit-button'} name={'edit-button'}>Edit</button>
+                        </div>
+                      </div>
+                  )}
+
+
+
 
                   <div>
                     <label htmlFor={'credit-card-name'}>Name on card</label>
