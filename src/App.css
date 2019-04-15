@@ -145,7 +145,10 @@ input, label {
   display:block;
 }
 
-/* Responsive columns */
+.position-relative {
+  position: relative;
+}
+
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
@@ -153,6 +156,14 @@ input, label {
     margin-bottom: 20px;
   }
 }
+
+img {
+  height:15px;
+  position:absolute;
+  right:5px;
+  top:8px;
+}
+
 
 /* Style the counter cards */
 .card {

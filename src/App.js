@@ -52,13 +52,21 @@ class App extends Component {
 
                     <div>
                       <label htmlFor={'security-code'}>Security Code</label>
-                      <input type="text" className="security-code-input" name={'security-code-input'} />
+                      <div className={'position-relative'}>
+                        <input type="text" className="security-code-input" name={'security-code-input'} />
+                        <img src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABF1BMVEUAAAC9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8dBUDbXAAAAXHRSTlMAAQIEBQcICw4QERITFRYXGCMlJicpLi8xMjQ1Njg5Ojs9RUlMTU5RUlZYXGFma2x1f4iJi46Pkpeam52go6Wor7S1t7q8wMHFz9HT1dfa4ubo6evt7/P19/n7/aClJO4AAAEkSURBVBgZjcGJNgJRAAbgf0ajbE1jyU6IkSXZFVnKkhZJlOp//+dw752ZqzrHOb4P2lQqW219vl4kIxi2UqH2NIN+488ccGNBm+9wSMOGb5Ge97PDg/M2le8olGiPUsWBZKw2KDUtCEaFUtaEb+SRUh5CklLJhGaWKTmA0aS0ASHkTEKapVQEHCrdLWC6TR5DMKmEkabvbrtH8g2CQSWBAvtVYxAiVDKos49rQEpTyaHDX8tQ1ui5R53aFaTQKX05FKglIFg1BjJIU9uEcEQtAYd/CsNoMrAfEk4YKAJIMhCHkGLAAWBU6ItDSNGXh2T36IlDSNHTtKAs0fPguu5umUrHhm+hyyEfMWgTJQ64HUW/9Rq1lzkMs/eua62v8uXOGP7lB8OJpDWSkNWtAAAAAElFTkSuQmCC'} alt="" />
+                      </div>
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor={'postal-code'}>ZIP/Postal code</label>
-                    <input type="text" className="input" name={'postal-code'} />
+
+                    <div className="position-relative">
+                      <input type="text" className="input" name={'postal-code'} />
+                      <img src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABF1BMVEUAAAC9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8e9w8dBUDbXAAAAXHRSTlMAAQIEBQcICw4QERITFRYXGCMlJicpLi8xMjQ1Njg5Ojs9RUlMTU5RUlZYXGFma2x1f4iJi46Pkpeam52go6Wor7S1t7q8wMHFz9HT1dfa4ubo6evt7/P19/n7/aClJO4AAAEkSURBVBgZjcGJNgJRAAbgf0ajbE1jyU6IkSXZFVnKkhZJlOp//+dw752ZqzrHOb4P2lQqW219vl4kIxi2UqH2NIN+488ccGNBm+9wSMOGb5Ge97PDg/M2le8olGiPUsWBZKw2KDUtCEaFUtaEb+SRUh5CklLJhGaWKTmA0aS0ASHkTEKapVQEHCrdLWC6TR5DMKmEkabvbrtH8g2CQSWBAvtVYxAiVDKos49rQEpTyaHDX8tQ1ui5R53aFaTQKX05FKglIFg1BjJIU9uEcEQtAYd/CsNoMrAfEk4YKAJIMhCHkGLAAWBU6ItDSNGXh2T36IlDSNHTtKAs0fPguu5umUrHhm+hyyEfMWgTJQ64HUW/9Rq1lzkMs/eua62v8uXOGP7lB8OJpDWSkNWtAAAAAElFTkSuQmCC'} alt="" />
+                    </div>
+
                   </div>
 
                   <div>
