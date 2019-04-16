@@ -88,6 +88,26 @@ class App extends Component {
 
   render() {
 
+    const areFieldsFilled = () => {
+
+      let areFieldsFilled = true;
+
+      if(this.state.nameOnCard === null || this.state.nameOnCard === '' ){
+        areFieldsFilled = false
+      } else if(this.state.cardNumber === null || this.state.cardNumber === '' ){
+        areFieldsFilled = false
+      } else if(this.state.expiryDate === null || this.state.expiryDate === '' ){
+        areFieldsFilled = false
+      } else if(this.state.securityCode === null || this.state.securityCode === '' ){
+        areFieldsFilled = false
+      } else if(this.state.postalCode === null || this.state.postalCode === '' ){
+        areFieldsFilled = false
+      }
+
+      return areFieldsFilled;
+
+    };
+
     const globalToolTipStyles = {
       width: '120px',
       backgroundColor: 'black',
@@ -95,13 +115,11 @@ class App extends Component {
       textAlign: 'center',
       borderRadius: '6px',
       padding: '5px 0',
-
-    /* Position the tooltip */
-    position: 'absolute',
-    zIndex: '1',
-    top: '100%',
-    left: '50%',
-    marginLeft: '-60px'
+      position: 'absolute',
+      zIndex: '1',
+      top: '100%',
+      left: '50%',
+      marginLeft: '-60px'
     }
 
     const tooltipStyleSecurityCode = {
@@ -139,7 +157,7 @@ class App extends Component {
                       </div>
 
                   ) : (
-                      <div className="invoice-amount">
+                      <div className="invoice-amount margin-top-5">
                         <div>
                           <span>{"$" + this.state.invoiceAmount}</span>
                         </div>
@@ -224,9 +242,16 @@ class App extends Component {
                   </div>
 
                   <div>
-                    <button className="submit-button">
-                      Pay
-                    </button>
+
+                    {(!areFieldsFilled()) ? (<button className="submit-button">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAnFBMVEUAAADs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PG3iEVjAAAAM3RSTlMAAQIDBAgLEBMUFRgcHR4tLjE4Oj9ARU5QUlZkb3V/hYaIkaivsLK1udfZ2uDz9ff5+/2bPF3NAAAAk0lEQVQoz+3RyQ7CIBRAUVqts7UOdZ7nGfX+/7+5wJJXS4wbd94VLyeQAErZSr3JbBTllKPyDgD00MtY60HSJv9mEaJ9em+ggW3dV0FfA+MUToG5WVauQEGYf4dDclYbGAisAd1k8C6wFtgEqnZawVlgByjaaQkIjH+B4ZFMt8XrZidcNQw6jfiP3+HHtw0dan7lCcvqVxA/FICsAAAAAElFTkSuQmCC" alt=""/> Pay ${this.state.invoiceAmount}
+                    </button>) : (<button className={'submit-button'}>
+                      <img
+                          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAmVBMVEUAAADs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PEQXUG5AAAAMnRSTlMAAgQFCAoLDA0SFRgeJSctLzI0NUdLVldbXWNtc3V/g4WJjpqor7m+xcrR2ejt9/n7/X8cTiEAAACRSURBVChT7c63GoJAEEXhAREjioo5rTlgPO//cBYSdllaO0915/ubEcnz252WI6X1rgDvbc0mZ0fSq2/hnrywYGPgEjjiTYCnZ5j7gOP3lwBYGhgC9WTP4W7gDE7pbgJVHVewSXcFaOioQGVHpKa6mVjsJ+gvYoiV1nqY4Rm7QYolxuiPGt5KMEqxa+vBFRH5AGfORp9ZXzUXAAAAAElFTkSuQmCC"
+                          alt=""/> Pay ${this.state.invoiceAmount}
+                    </button>)}
+
+
                   </div>
 
                 </div>

@@ -107,6 +107,12 @@ textarea:focus, input:focus{
   outline: none;
 }
 
+button:focus, input:focus {
+  outline: none;
+  background-color: #EEF9F9;
+  border-color: #B0E5E3
+}
+
 .payment-label{
   font-size: 13px;
   font-weight: bold;
@@ -138,7 +144,7 @@ textarea:focus, input:focus{
   border: none;
   background-color: #4CAF50;
   padding: 14px 28px;
-  font-size: 16px;
+  font-size: 19px;
   cursor: pointer;
   text-align: center;
   border-radius: 5px;
@@ -190,4 +196,8 @@ input, label {
   border: 1px solid #A6AAAD;
 
   border-radius: 5px;
+}
+
+.margin-top-5{
+  margin-top: 5px;
 }
